@@ -1,0 +1,18 @@
+FROM node:21-alpine3.18  
+RUN apk update && apk add /bin/sh && \ 
+     mkdir /app 
+ENV PROJECT_HOME /app 
+WORKDIR $PROJECT_HOME
+COPY package.json package-lock.json  $PROJECT_HOME
+RUN npm install 
+COPY . .
+EXPOSE 9981 
+CMD ["node","app.js"] 
+
+
+
+
+
+    
+
+
